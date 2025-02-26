@@ -1,6 +1,6 @@
 // hooks/auth/useSignOut.ts
 import { useState } from "react";
-import { getAuth, signOut, signInAnonymously } from "firebase/auth"; // Import signInAnonymously
+import { getAuth, signOut } from "firebase/auth"; // Remove signInAnonymously import
 
 const useSignOut = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -8,13 +8,15 @@ const useSignOut = () => {
   const signUserOut = async () => {
     setIsLoading(true);
     try {
-      await signOut(getAuth()); // Sign out the current user
-      await signInAnonymously(getAuth()); // Immediately sign in anonymously
-      // No toast notifications anymore
-    } catch (error) {
+      await signOut(getAuth()); // Just sign out, no anonymous sign-in after
+      // Removed automatic signInAnonymously call
+    } catch (error: unknown) {
       console.error("Sign-out error:", error);
-      // No toast notifications anymore
-      throw error;
+      if (error instanceof Error) {
+        throw error;
+      } else {
+        throw new Error("An unknown error occurred during sign-out.");
+      }
     } finally {
       setIsLoading(false);
     }
