@@ -1,4 +1,4 @@
-// File: /Users/Loskepetos/Public/github.com/simulasikode/studios/src/app/color-process/page.tsx
+// File: /Users/Loskepetos/Public/github.com/simulasikode/simulasi.studio/src/app/color-process/page.tsx
 import * as entry from '../../../../src/app/color-process/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

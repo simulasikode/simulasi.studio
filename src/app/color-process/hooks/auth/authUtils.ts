@@ -2,17 +2,17 @@
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "@/firebase/config";
 import { FirebaseError } from "firebase/app";
+import { User } from "firebase/auth"; // Import the User type
 
 export const createUserDocument = async (
-  user: any,
+  user: User, // Specify the type as Firebase User
   provider: string,
   displayName: string,
 ) => {
-  // Type 'user' appropriately
   await setDoc(
     doc(db, "users", user.uid),
     {
-      email: user.email,
+      email: user.email || null, // Use user.email, handle potential null
       createdAt: new Date(),
       displayName: displayName,
       provider: provider,
@@ -22,7 +22,8 @@ export const createUserDocument = async (
   );
 };
 
-export const getErrorMessage = (error: any): string => {
+export const getErrorMessage = (error: FirebaseError): string => {
+  // Specify type as FirebaseError
   let errorMessage = "An unexpected error occurred";
 
   if (error instanceof FirebaseError) {
@@ -40,8 +41,8 @@ export const getErrorMessage = (error: any): string => {
       default:
         errorMessage = `Firebase authentication error: ${error.message}`;
     }
-  } else if (error instanceof Error) {
-    errorMessage = error.message;
+  } else if (error) {
+    errorMessage = error;
   }
 
   return errorMessage;

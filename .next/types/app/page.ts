@@ -1,4 +1,4 @@
-// File: /Users/Loskepetos/Public/github.com/simulasikode/studios/src/app/page.tsx
+// File: /Users/Loskepetos/Public/github.com/simulasikode/simulasi.studio/src/app/page.tsx
 import * as entry from '../../../src/app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

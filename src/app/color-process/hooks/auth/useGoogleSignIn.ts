@@ -36,7 +36,7 @@ const useGoogleSignIn = () => {
         // No toast here
       }
       return user; // Return the user after successful Google Sign-in
-    } catch (error: any) {
+    } catch (error) {
       throw error; // Re-throw the error for the component to handle if needed
     } finally {
       setIsLoading(false);

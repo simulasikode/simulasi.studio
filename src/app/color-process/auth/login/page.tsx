@@ -69,10 +69,10 @@ const LoginPage = () => {
   };
 
   const inputClasses =
-    "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline";
+    "appearance-none bg-[#202020] border-b border-primary py-2 px-3 leading-tight focus:outline-none";
 
   return (
-    <div className="relative mx-auto max-w-md min-h-[100vh] top-16">
+    <div className="relative max-w-md min-h-[100vh] top-16 px-6">
       <div className="p-6 border border-primary">
         <h2 className="text-2xl font-black mb-12 text-center">
           Access an Color Process
@@ -83,7 +83,7 @@ const LoginPage = () => {
               Email
             </label>
             <input
-              className={`${inputClasses}  appearance-none  py-2 px-3  leading-tight focus:outline-none `}
+              className={`${inputClasses}  appearance-none  py-2 px-3  leading-tight focus:outline-none w-full `}
               id="email"
               type="email"
               placeholder="Email"
@@ -126,23 +126,22 @@ const LoginPage = () => {
               <p className="text-red-500 text-xs italic">{passwordError}</p>
             )}
           </div>
-          <div className="flex flex-col space-y-4 mt-8">
-            <Button className="w-full" type="submit" disabled={isLoading}>
+          <div className="flex gap-6 mt-8">
+            <Button type="submit" disabled={isLoading}>
               {isLoading ? "Logging In..." : "Login"}
             </Button>
             <Button
-              className="w-full"
               variant="secondary"
               onClick={handleGoogleLogin}
               disabled={isLoading}
             >
               {isLoading ? "Logging in with Google..." : "Login with Google"}
             </Button>
-            <span className="border-b border-primary my-6" />
-
+          </div>
+          <div className="border-t border-[#202020] my-6">
             <Button
+              className="mt-6"
               variant="primary"
-              className="w-full"
               onClick={handleContinueAsGuest}
               disabled={isLoading}
             >
@@ -150,11 +149,13 @@ const LoginPage = () => {
             </Button>
           </div>
         </form>
-        <p className="text-center mt-4">
-          Don&apos;t have an account?
-          <a href="/auth/signup" className="text-blue-500 hover:underline">
-            Sign up
-          </a>
+        <p className="text-left text-sm mt-4">
+          Don&apos;t have an account?{" "}
+          <span>
+            <a href="/auth/signup" className="text-blue-500 hover:underline">
+              Sign up
+            </a>
+          </span>
         </p>
       </div>
     </div>

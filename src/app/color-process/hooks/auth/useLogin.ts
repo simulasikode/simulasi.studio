@@ -12,7 +12,7 @@ const useLogin = () => {
       await signInWithEmailAndPassword(auth, email, password);
       // No toast here!
       return getAuth().currentUser; // Return the current user after login
-    } catch (error: any) {
+    } catch (error) {
       // No toast here!
       throw error; // Re-throw the error for the component to handle if needed
     } finally {

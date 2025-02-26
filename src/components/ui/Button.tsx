@@ -49,6 +49,7 @@ const Button: React.FC<ButtonProps> = ({
   const baseClasses = `
     inline-flex
     items-center
+    text-left
     focus:outline-none
     transition-colors
     disabled:opacity-50
@@ -133,7 +134,7 @@ const Button: React.FC<ButtonProps> = ({
           onClick={onClick}
           disabled={disabled}
           {...props}
-          className={`w-full h-full p-0 flex items-center justify-center ${hasIcon ? "gap-2" : ""}`} //Flex properties
+          className={`w-full h-full p-0 flex items-center text-left ${hasIcon ? "gap-2" : ""}`} //Flex properties
         >
           {children}
         </button>
