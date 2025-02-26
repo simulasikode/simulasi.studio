@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import GoogleAnalytics from "@/firebase/GoogleAnalytics";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
   title: "Simulasi: Screen printing studio",
@@ -15,7 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <GoogleAnalytics />
       <body className="antialiased">
+        <GoogleTagManager gtmId="GTM-PCWP9Z52" />
         {children}
         <Footer />
       </body>
