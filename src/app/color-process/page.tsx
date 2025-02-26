@@ -23,6 +23,9 @@ export default function Page() {
                 </div>
                 <div className="flex flex-wrap gap-4">
                   <Button category="previous">Back</Button>
+                  <Button category="next" href="/color-process/auth/login">
+                    Login
+                  </Button>
                 </div>
               </div>
             </div>
