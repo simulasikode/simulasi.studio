@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 import Link from "next/link";
-import { ArrowUpRightIcon, ArrowLeftIcon } from "@heroicons/react/24/solid";
 
 type ButtonSize = "small" | "medium" | "large";
 type ButtonVariant =
@@ -27,6 +26,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   target?: "_blank" | "_self" | "_parent" | "_top";
   rel?: string;
   category?: ButtonCategory;
+  hasIcon?: boolean; // New prop:  Explicitly control icon visibility
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -41,6 +41,7 @@ const Button: React.FC<ButtonProps> = ({
   target,
   rel,
   category = "next",
+  hasIcon = true, //  Default to showing the icon
   ...props
 }) => {
   const isLink = !!href;
@@ -48,7 +49,6 @@ const Button: React.FC<ButtonProps> = ({
   const baseClasses = `
     inline-flex
     items-center
-    gap-8
     focus:outline-none
     transition-colors
     disabled:opacity-50
@@ -116,16 +116,6 @@ const Button: React.FC<ButtonProps> = ({
 
   const buttonClasses = `${baseClasses} ${sizeClasses[size]} ${variantColors[variant][styleType]}`;
 
-  const getIcon = () => {
-    const iconClass = "h-4 w-4 flex justify-between items-center";
-    if (category === "previous") {
-      return <ArrowLeftIcon className={iconClass} aria-hidden="true" />;
-    }
-    return <ArrowUpRightIcon className={iconClass} aria-hidden="true" />;
-  };
-
-  const iconElement = getIcon();
-
   const handleClick = () => {
     if (category === "previous") {
       window.history.back();
@@ -143,10 +133,9 @@ const Button: React.FC<ButtonProps> = ({
           onClick={onClick}
           disabled={disabled}
           {...props}
-          className="w-full h-full p-0 flex items-center justify-between gap-8"
+          className={`w-full h-full p-0 flex items-center justify-center ${hasIcon ? "gap-2" : ""}`} //Flex properties
         >
           {children}
-          {iconElement}
         </button>
       </Link>
     );
@@ -160,7 +149,6 @@ const Button: React.FC<ButtonProps> = ({
       {...props}
     >
       {children}
-      {iconElement}
     </button>
   );
 };
