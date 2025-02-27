@@ -1,6 +1,0 @@
-{
-  "/color-process/page": "app/color-process/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/color-process/auth/login/page": "app/color-process/auth/login/page.js",
-  "/page": "app/page.js"
-}
