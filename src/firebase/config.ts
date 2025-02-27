@@ -1,36 +1,30 @@
-// Import the functions you need from the SDKs you need
+// firebase/config.js - NO CHANGES NEEDED HERE
 import { initializeApp } from "firebase/app";
-import { getAnalytics, logEvent } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAnalytics } from "firebase/analytics";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore"; // Import getFirestore
+import { FirebaseOptions } from "firebase/app";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-
-// create .env.local
-const firebaseConfig = {
-  apiKey: "AIzaSyBOP3UhZ2B-7naisuTn1JDfqHGbZ8HmzM8",
-  authDomain: "studios-9c34c.firebaseapp.com",
-  projectId: "studios-9c34c",
-  storageBucket: "studios-9c34c.firebasestorage.app",
-  messagingSenderId: "228696722817",
-  appId: "1:228696722817:web:72d572a227fd49fb40ec80",
+export const firebaseConfig: FirebaseOptions = {
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
   measurementId: "G-5D5QGRPLJV",
 };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-let analytics = null; // Initialize to null
+// Initialize Auth
+export const auth = getAuth(app);
 
-if (process.env.NODE_ENV === "production") {
+// Initialize Firestore
+export const db = getFirestore(app); // Initialize and export Firestore
+
+let analytics = null;
+if (typeof window !== "undefined") {
   analytics = getAnalytics(app);
-} else {
-  console.log("Firebase Analytics disabled in development.");
 }
-
-// Example of using analytics (check if it's initialized)
-if (analytics) {
-  // Assuming you have logEvent defined somewhere
-  logEvent(analytics, "page_view", { page_title: document.title });
-}
+export { app, analytics };

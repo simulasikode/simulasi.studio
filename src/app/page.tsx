@@ -16,9 +16,7 @@ export default function Home() {
                   with our innovative platform.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <Button category="next" href="/color-process">
-                    Let&apos;s Calculate
-                  </Button>
+                  <Button href="/color-process">Let&apos;s Calculate</Button>
                 </div>
               </div>
             </div>
