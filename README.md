@@ -14,4 +14,6 @@ pnpm dev
 bun dev
 ```
 
-### Update
+### Update main branch
+
+- All good!
