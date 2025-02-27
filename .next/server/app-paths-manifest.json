@@ -1,7 +1,6 @@
 {
   "/page": "app/page.js",
-  "/color-process/page": "app/color-process/page.js",
-  "/color-process/auth/login/page": "app/color-process/auth/login/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/color-process/auth/signup/page": "app/color-process/auth/signup/page.js"
+  "/color-process/page": "app/color-process/page.js",
+  "/color-process/auth/login/page": "app/color-process/auth/login/page.js"
 }
